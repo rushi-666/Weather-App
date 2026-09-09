@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Atmosphere - Warnings</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+            <!-- Brand -->
+            <a class="navbar-brand fw-bold fs-4" href="Index.html">
+                <i class="bi bi-globe"></i>
+                Atmosphere
+            </a>
+
+
+            <!-- Navigation -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                        <a class="nav-link active mx-3" aria-current="page" href="About.html">About Us</a>
+                    </li>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#" class="text-white-50 text-decoration-none small">About Us</a>
+                    <button class="btn btn-sm btn-secondary">°F / °C</button>
+                </div>
+            </ul>
+
+
+            <!-- Login / Sign Up -->
+            <div class="d-flex align-items-center gap-2">
+                <button type="button" class="btn btn-primary btn-sm px-3 py-1 text-nowrap" data-bs-toggle="modal"
+                    data-bs-target="#loginModal">
+                    Log In
+                </button>
+                <button type="button" class="btn btn-primary btn-sm px-3 py-1 text-nowrap" data-bs-toggle="modal"
+                    data-bs-target="#signupModal">
+                    Sign Up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Weather Navigation -->
+    <ul class="nav nav-pills nav-fill">
+        <li class="nav-item">
+            <a class="nav-link" href="Index.html">Today</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Hourly.html">Hourly</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="10-Day.html">10-Day</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Radar.html">Radar</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="MinuteCast.html">MinuteCast®</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Monthly.html">Monthly</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Air.html">Air Quality</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="Activities.html">
+                Health & Activities
+            </a>
+        </li>
+    </ul>
+
+
+    <!-- Warning Header -->
+    <section class="bg-light py-5">
+        <div class="container text-center">
+            <i class="bi bi-exclamation-triangle-fill text-warning fs-1"></i>
+            <h1 class="fw-bold mt-3">
+                Weather Warnings
+            </h1>
+            <p class="text-secondary">
+                Weather alerts and conditions for your selected location.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Location -->
+    <section class="container py-4">
+
+        <!-- Search City -->
+        <div class="input-group mx-auto mb-4" style="max-width: 500px;">
+            <input type="text" id="citySearch" class="form-control" placeholder="Search city...">
+
+            <button class="btn btn-primary" id="searchBtn" type="button">
+                <i class="bi bi-search"></i>
+                Search
+            </button>
+        </div>
+
+        <!-- Selected Location -->
+        <div class="text-center">
+            <h3 class="fw-bold">
+                <i class="bi bi-geo-alt"></i>
+                <span id="warningLocation">
+                    Loading location...
+                </span>
+            </h3>
+
+            <p class="text-secondary">
+                Checking current weather conditions...
+            </p>
+        </div>
+
+
+        <!-- Warning Summary -->
+
+        <div class="alert alert-light border shadow-sm rounded-4 mt-4" role="alert">
+            <div class="d-flex align-items-center">
+                <i id="warningSummaryIcon" class="bi bi-hourglass-split text-warning fs-3 me-3">
+                </i>
+                <div>
+                    <h5 id="warningSummaryTitle" class="fw-bold mb-1">
+                        Checking weather conditions...
+                    </h5>
+                    <p id="warningSummaryText" class="text-secondary mb-0">
+                        Loading the latest weather information.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Warning Cards -->
+    <section class="container pb-5">
+        <div class="row g-4">
+
+
+            <!-- Current Weather -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-cloud-sun text-warning fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            Current Conditions
+                        </h5>
+                        <p id="currentWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Hourly -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-clock-history text-danger fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            Hourly Warning
+                        </h5>
+                        <p id="hourlyWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MinuteCast -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-stopwatch text-info fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            MinuteCast Warning
+                        </h5>
+                        <p id="minuteWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- 10-Day -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-calendar-event text-primary fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            10-Day Warning
+                        </h5>
+                        <p id="dailyWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Air Quality -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-wind text-success fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            Air Quality Warning
+                        </h5>
+                        <p id="airQualityWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Radar -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-map text-info fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            Radar & Map Warning
+                        </h5>
+                        <p id="mapWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Activities -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body p-4">
+                        <i class="bi bi-person-walking text-secondary fs-2"></i>
+                        <h5 class="fw-bold mt-3">
+                            Activity Warning
+                        </h5>
+                        <p id="activityWarning" class="text-secondary">
+                            Loading...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light pt-5 pb-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Brand -->
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="fw-bold">
+                        <i class="bi bi-globe"></i>
+                        Atmosphere
+                    </h4>
+                    <p class="text-secondary mt-3">
+                        Your complete weather companion for accurate forecasts,
+                        warnings, air quality, radar and daily weather insights.
+                    </p>
+                </div>
+
+
+                <!-- Quick Links -->
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-3">
+                        Quick Links
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="Index.html" class="text-secondary text-decoration-none">
+                                Today
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Hourly.html" class="text-secondary text-decoration-none">
+                                Hourly
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="10-Day.html" class="text-secondary text-decoration-none">
+                                10-Day
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Warnings.html" class="text-secondary text-decoration-none">
+                                Warnings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- Weather -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">
+                        Weather
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="Radar.html" class="text-secondary text-decoration-none">
+                                Radar
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="MinuteCast.html" class="text-secondary text-decoration-none">
+                                MinuteCast
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Air.html" class="text-secondary text-decoration-none">
+                                Air Quality
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Activities.html" class="text-secondary text-decoration-none">
+                                Health & Activities
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <!-- About -->
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-3">
+                        Atmosphere
+                    </h6>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="About.html" class="text-secondary text-decoration-none">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Monthly.html" class="text-secondary text-decoration-none">
+                                Monthly Weather
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="Warnings.html" class="text-secondary text-decoration-none">
+                                Weather Warnings
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Divider -->
+            <hr class="border-secondary my-4">
+
+            <!-- Copyright -->
+            <div class="text-center">
+                <p class="text-secondary mb-0 small">
+                    © 2026 Atmosphere. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="JavaScript/warning.js"></script>
+</body>
+
+</html>

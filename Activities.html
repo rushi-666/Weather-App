@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Health & Activities on Atmosphere</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Hour-by-Hour Data -->
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-primary border-bottom border-secondary py-3">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="Index.html">
+                <i class="bi bi-globe me-2"></i> Atmosphere
+            </a>
+            <div class="d-flex flex-grow-1 mx-lg-5 my-2 my-lg-0">
+                <form id="searchForm" class="d-flex flex-grow-1">
+                    <input id="citySearch" class="form-control border-secondary text-dark w-100" type="search"
+                        placeholder="Search city..." aria-label="Search">
+
+                    <button class="btn btn-outline-success mx-1" type="submit">
+                        Search
+                    </button>
+                </form>
+            </div>
+            <a href="Warnings.html" class="btn btn-outline-warning btn-sm mx-3">
+                <i class="bi bi-exclamation-triangle"></i>
+                Warnings
+            </a>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <div class="row g-4">
+
+            <!-- Sidebar Navigation Menu -->
+
+            <div>
+                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
+                        class="bi bi-list"></i></button>
+            </div>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="nav flex-column nav-pills gap-2">
+                    <div>
+                        <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
+                                class="bi bi-list"></i></button>
+                    </div>
+                    <a class="nav-link nav-link" href="./index.html"><i class="bi bi-calendar-event me-2"></i>Today</a>
+                    <a class="nav-link" href="./Hourly.html"><i class="bi bi-clock me-2"></i>Hourly</a>
+                    <a class="nav-link" href="./10-Day.html"><i class="bi bi-calendar3 me-2"></i>10-Day</a>
+                    <a class="nav-link" href="./Radar.html"><i class="bi bi-radar me-2"></i>Radar</a>
+                    <a class="nav-link" href="./MinuteCast.html"><i
+                            class="bi bi-hourglass-split me-2"></i>MinuteCast®</a>
+                    <a class="nav-link" href="./Monthly.html"><i class="bi bi-calendar-month me-2"></i>Monthly</a>
+                    <a class="nav-link" href="./Air.html"><i class="bi bi-wind me-2"></i>Air Quality</a>
+                    <a class="nav-link active" href="./Activities.html"><i class="bi bi-heart-pulse me-2"></i>Health &
+                        Activities</a>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-12">
+
+                <!-- Header Info -->
+                <div class="container mt-4 pb-4 border rounded-4 position-relative top-0 start-35">
+                    <div>
+                        <h2 class="h4 mt-3 mb-1 fw-bold">Health & Activities —<span
+                                class="activity-city-name">Loading...</span></h2>
+                    </div>
+                </div>
+
+
+                <!-- Activities List -->
+
+                <!-- Main Content Area -->
+                <main class="container py-4">
+
+                    <!-- Activity Grid (2 Columns) -->
+                    <div class="row g-4 mb-4">
+
+
+                        <!--  Running / Jogging -->
+                        <div class="col-md-6">
+                            <div id="runningActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-person-walking fs-4 text-warning"></i>
+                                        <strong class="fs-5">Running / Jogging</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class="text-secondary small mb-2 activity-message ">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Cycling -->
+                        <div class="col-md-6">
+                            <div id="cyclingActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-bicycle fs-4 text-warning"></i>
+                                        <strong class="fs-5 ">Cycling</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class="text-secondary small mb-2 activity-message ">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Golf -->
+                        <div class="col-md-6">
+                            <div id="golfActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-flag fs-4 text-warning"></i>
+                                        <strong class="fs-5">Golf</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class="text-secondary small mb-2 activity-message">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Swimming / Beach -->
+                        <div class="col-md-6">
+                            <div id="swimmingActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-water fs-4 text-warning"></i>
+                                        <strong class="fs-5">Swimming / Beach</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class=" small mb-2 activity-message">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Outdoor Yoga -->
+                        <div class="col-md-6">
+                            <div id="yogaActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-person-standing fs-4 text-warning"></i>
+                                        <strong class="fs-5">Outdoor Yoga</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class="text-secondary small mb-2 activity-message">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Gardening -->
+                        <div class="col-md-6">
+                            <div id="gardeningActivity" class="p-3 bg-secondary bg-opacity-10 rounded">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-flower1 fs-4 text-warning"></i>
+                                        <strong class="fs-5">Gardening</strong>
+                                    </div>
+                                    <span class=" fw-bold activity-status">Loading...</span>
+                                </div>
+                                <p class="text-secondary small mb-2 activity-message">Loading...</p>
+                                <p class="activity-best-time"></p>
+                                <div class="progress">
+                                    <div class="progress-bar " style="width: 0%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Recommendations Footer Row -->
+
+                    <div class="row g-4 pt-2">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-3 p-2">
+                                <i class="bi bi-pigeon fs-2 text-warning"></i>
+                                <div>
+                                    <strong>What to Wear</strong>
+                                    <div id="wearRecommendation" class="text-secondary small">Loading...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-center gap-3 p-2">
+                                <i class="bi bi-sun fs-2 text-warning"></i>
+                                <div>
+                                    <strong>Sun Protection</strong>
+                                    <div id="sunRecommendation" class="text-secondary small">Loading...</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
+<div class="container mt-4 pb-4 border rounded-4 text-white text-center w-100" style="background-color: #0b1b28">
+    <div>
+        <p id="footerUpdateTime" class="mt-5">Atmosphere · Updated Loading...</p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+<script type="module" src="JavaScript/Activities.js"></script>
+</body>
+
+</html>

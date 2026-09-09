@@ -1,0 +1,529 @@
+/* =========================
+Navigation
+========================= */
+
+.navposition {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.linkposition {
+  position: sticky;
+  top: 5rem;
+  left: 0;
+  width: 100%;
+  background-color: white;
+}
+
+
+/* =========================
+Weather Card
+========================= */
+
+.weather-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.weather-card:hover,
+.nav-link:hover {
+  border: 2px solid #0d6efd;
+  border-radius: 8px;
+}
+
+/* =========================
+   Monthly Calendar
+========================= */
+
+.calendar-wrapper {
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+
+/* Weekday Header */
+
+.calendar-header {
+  margin-bottom: 10px;
+}
+
+.calendar-header>div {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 2px;
+}
+
+
+/* Weather Box */
+
+.weather-day {
+  background-color: white;
+  border-radius: 8px;
+  min-height: 120px;
+  padding: 12px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weather-day p {
+  margin-bottom: 8px;
+}
+
+
+/* Empty day */
+
+.empty-day {
+  min-height: 120px;
+}
+
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width: 768px) {
+
+  .calendar-wrapper {
+    padding: 8px;
+  }
+
+  .calendar-grid {
+    gap: 7px;
+  }
+
+  .weather-day {
+    min-height: 105px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .empty-day {
+    min-height: 105px;
+  }
+
+  .weather-day p {
+    margin-bottom: 6px;
+  }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 576px) {
+
+  .calendar-wrapper {
+    padding: 5px;
+  }
+
+  .calendar-grid {
+    gap: 4px;
+  }
+
+  .calendar-header>div {
+    font-size: 10px;
+    padding: 5px 1px;
+  }
+
+  .weather-day {
+    min-height: 75px;
+    padding: 4px;
+    font-size: 10px;
+  }
+
+  .empty-day {
+    min-height: 75px;
+  }
+
+  .weather-day p {
+    margin-bottom: 3px;
+  }
+}
+
+
+/* =========================
+   Very Small Mobile
+========================= */
+
+@media (max-width: 400px) {
+
+  .calendar-grid {
+    gap: 3px;
+  }
+
+  .calendar-header>div {
+    font-size: 9px;
+  }
+
+  .weather-day {
+    min-height: 68px;
+    padding: 3px;
+    font-size: 9px;
+  }
+
+  .empty-day {
+    min-height: 68px;
+  }
+
+  .weather-day p {
+    margin-bottom: 2px;
+  }
+}
+
+
+#hourlyForecast {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+}
+
+.weather-condition {
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 0;
+  min-height: 36px;
+  margin: 0;
+}
+
+
+/* =========================
+   7-Day Forecast
+========================= */
+
+#dailyForecast {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.daily-card {
+  display: grid;
+  grid-template-columns: 70px 55px minmax(180px, 1fr) 100px 80px 100px;
+  align-items: center;
+  gap: 12px;
+
+  padding: 16px 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+
+  color: white;
+}
+
+.daily-day {
+  grid-column: 1;
+  font-weight: 600;
+}
+
+.daily-icon {
+  grid-column: 2;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.daily-condition {
+  grid-column: 3;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.temperature-bar {
+  grid-column: 4;
+  width: 100%;
+  max-width: 120px;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.temperature-fill {
+  height: 100%;
+  background: #7ec0ee;
+  border-radius: 20px;
+  transition: width 0.3s ease, margin-left 0.3s ease;
+}
+
+.daily-rain {
+  grid-column: 5;
+  font-size: 13px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.daily-temperature {
+  grid-column: 6;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.daily-temperature strong {
+  font-weight: 600;
+}
+
+.daily-temperature span {
+  opacity: 0.45;
+}
+
+
+/* Tablet / Mobile */
+@media (max-width: 768px) {
+  .daily-card {
+    grid-template-columns: 50px 45px 1fr 70px 60px 80px;
+    gap: 8px;
+    padding: 12px 10px;
+  }
+
+  .daily-icon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .daily-condition {
+    font-size: 13px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .temperature-bar {
+    max-width: 70px;
+  }
+
+  .daily-rain {
+    font-size: 11px;
+  }
+
+  .daily-temperature {
+    font-size: 13px;
+    gap: 5px;
+  }
+}
+
+
+@media (max-width: 576px) {
+  .daily-card {
+    grid-template-columns: 45px 35px 1fr 55px 55px 70px;
+    gap: 5px;
+    padding: 10px 6px;
+  }
+
+  .daily-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .daily-condition {
+    font-size: 11px;
+  }
+
+  .temperature-bar {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .daily-rain {
+    font-size: 10px;
+  }
+
+  .daily-temperature {
+    font-size: 11px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .daily-card {
+    grid-template-columns: 40px 32px 1fr 45px 48px 65px;
+    gap: 4px;
+    padding: 8px 5px;
+  }
+
+  .daily-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .daily-condition {
+    font-size: 10px;
+  }
+
+  .temperature-bar {
+    max-width: 45px;
+    height: 5px;
+  }
+
+  .daily-rain {
+    font-size: 9px;
+  }
+
+  .daily-temperature {
+    font-size: 10px;
+    gap: 3px;
+  }
+}
+
+
+
+
+/* =========================
+   10-Day Forecast
+========================= */
+
+#tenDayForecast td,
+#tenDayForecast th {
+  vertical-align: middle;
+}
+
+#tenDayForecast .progress {
+  min-width: 120px;
+}
+
+@media (max-width: 768px) {
+
+  #tenDayForecast td,
+  #tenDayForecast th {
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  #tenDayForecast .progress {
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+
+  #tenDayForecast td,
+  #tenDayForecast th {
+    font-size: 12px;
+  }
+
+  #tenDayForecast .progress {
+    min-width: 80px;
+  }
+}
+
+
+.storm-arrow-head {
+  background: transparent;
+  border: none;
+  color: #ff3b30;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* Monthly calendar day */
+
+.weather-day {
+  min-height: 110px;
+  padding: 10px 6px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: center;
+}
+
+/* Weather image */
+
+.monthly-weather-icon {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+/* Empty cells before the first day */
+
+.empty-day {
+  min-height: 110px;
+}
+
+/* Icon container */
+
+.monthly-icon-container {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Temperature */
+
+.weather-day p {
+  margin: 0;
+}
+
+
+.weather-day.today {
+  border: 2px solid currentColor;
+  border-radius: 10px;
+}
+
+
+
+ /* activity bar */
+
+/* Activity progress bar colors */
+
+.activity-excellent,
+.activity-good {
+  background-color: #198754 !important;
+}
+
+.activity-fair {
+  background-color: #ffc107 !important;
+}
+
+.activity-poor,
+.activity-avoid {
+  background-color: #dc3545 !important;
+}
+
+
+/* Activity status colors */
+
+.status-excellent,
+.status-good {
+  color: #198754 !important;
+}
+
+.status-fair {
+  color: #ffc107 !important;
+}
+
+.status-poor,
+.status-avoid {
+  color: #dc3545 !important;
+}

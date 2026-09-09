@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minute Cast — on Atmosphere</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Minute Data -->
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-primary border-bottom border-secondary py-3">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="Index.html">
+                <i class="bi bi-globe me-2"></i> Atmosphere
+            </a>
+            <div class="d-flex flex-grow-1 mx-lg-5 my-2 my-lg-0">
+                <form id="minuteCastSearchForm" class="d-flex flex-grow-1 mx-lg-5 my-2 my-lg-0">
+
+                    <input id="minuteCastCitySearch" class="form-control border-secondary text-dark w-100" type="search"
+                        placeholder="Search city..." aria-label="Search">
+
+                    <button class="btn btn-outline-success mx-1" type="submit">
+                        Search
+                    </button>
+
+                </form>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <a href="Warnings.html" class="btn btn-outline-warning btn-sm mx-3">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    Warnings
+                </a>
+                <a href="#" class="text-white-50 text-decoration-none small">About Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <div class="row g-4">
+
+            <!-- Sidebar Navigation Menu -->
+
+            <div>
+                <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
+                        class="bi bi-list"></i></button>
+            </div>
+
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+                id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+                <div class="nav flex-column nav-pills gap-2">
+                    <div>
+                        <button class="btn btn-sm btn-primary" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
+                                class="bi bi-list"></i></button>
+                    </div>
+                    <a class="nav-link nav-link" href="./index.html"><i class="bi bi-calendar-event me-2"></i>Today</a>
+                    <a class="nav-link " href="./Hourly.html"><i class="bi bi-clock me-2"></i>Hourly</a>
+                    <a class="nav-link " href="./10-Day.html"><i class="bi bi-calendar3 me-2"></i>10-Day</a>
+                    <a class="nav-link" href="./Radar.html"><i class="bi bi-radar me-2"></i>Radar</a>
+                    <a class="nav-link active" href="./MinuteCast.html"><i
+                            class="bi bi-hourglass-split me-2"></i>MinuteCast®</a>
+                    <a class="nav-link" href="./Monthly.html"><i class="bi bi-calendar-month me-2"></i>Monthly</a>
+                    <a class="nav-link" href="./Air.html"><i class="bi bi-wind me-2"></i>Air Quality</a>
+                    <a class="nav-link" href="./Activities.html"><i class="bi bi-heart-pulse me-2"></i>Health &
+                        Activities</a>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="col-lg-12">
+
+                <!-- Header Info -->
+                <div class="container mt-4 pb-4 border rounded-4 position-relative top-0 start-35">
+                    <div>
+                        <h2 id="minuteCastTitle" class="h4 mt-3 mb-1 fw-bold">MinuteCast® — Next 60 Minutes · New York
+                        </h2>
+                        <p id="minuteCastUpdated" class="text-muted small mb-0">Atmosphere · Updated 12:00 PM · Tuesday,
+                            June 30</p>
+                    </div>
+                </div>
+
+                <!-- city MinuteCast -->
+
+                <div class="p-3 mt-2" style="border-radius: 24px; background-color: #0b1b28; overflow: hidden;">
+                    <div class="p-4"
+                        style="border-radius: 24px; background-color: #ffffff; border: 1px solid #e2e8f0; color: #1e293b;">
+
+                        <!-- MinuteCast Title Header -->
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="text-uppercase tracking-wider small fw-bold text-secondary"
+                                style="letter-spacing: 0.1rem; color: #64748b;">
+                                <span id="minuteCastStatus">
+                                    Checking precipitation...
+                                </span>
+                            </div>
+                        </div>
+
+                        <div id="minuteCastRefreshStatus" class="small text-muted">
+                            Live · Updated just now
+                        </div>
+
+                        <!-- Interactive Minute Canvas Area -->
+                        <div class="card border-0 p-4 rounded-4 w-100 shadow-sm"
+                            style="background-color: #ffffff; color: #1e293b;">
+
+                            <!-- Top Status Header -->
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <!-- Legend & Live Indicator -->
+                                <div class="d-flex align-items-center gap-3 small text-muted mt-2">
+
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span style="
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #38bdf8;
+                display: inline-block;
+            ">
+                                        </span>
+                                        Light
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span style="
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #0284c7;
+                display: inline-block;
+            ">
+                                        </span>
+                                        Moderate
+                                    </div>
+
+                                    <div class="d-flex align-items-center gap-1">
+                                        <span style="
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #1d4ed8;
+                display: inline-block;
+            ">
+                                        </span>
+                                        Heavy
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Chart Body with Light Grid Overlay -->
+                            <div class="position-relative p-3 rounded-3 my-2"
+                                style="background-color: #f8fafc; border: 1px solid #e2e8f0; overflow: hidden;">
+
+                                <!-- Subtle Background Grid Pattern -->
+                                <div class="position-absolute start-0 top-0 w-100 h-100"
+                                    style="background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px); background-size: 80px 40px; opacity: 0.5; pointer-events: none;">
+                                </div>
+
+                                <!-- 60-Minute Bar Graph Display -->
+                                <div id="minuteCastGraph"
+                                    class="d-flex align-items-end justify-content-between gap-1 position-relative pt-4 pb-2 px-1"
+                                    style="height: 140px; z-index: 1;">
+                                </div>
+
+                                <!-- Time Labels Axis -->
+                                <div id="minuteCastTimeAxis"
+                                    class="d-flex justify-content-between text-muted small border-top pt-2 mt-1"
+                                    style="border-color: #cbd5e1 !important; font-size: 0.8rem;">
+                                    <span>Now</span>
+                                    <span>15m</span>
+                                    <span>30m</span>
+                                    <span>45m</span>
+                                    <span>60m</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-3 mt-2 text-center"
+                    style="border-radius: 24px; background-color: #0b1b28; overflow: hidden;">
+                    <p id="minuteCastFooterUpdated" class="mx-2 text-white-50">
+                        Atmosphere · Updated
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="minuteCastTooltip" class="minute-tooltip"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script type="module" src="JavaScript/MinuteCast.js"></script>
+</body>
+
+</html>

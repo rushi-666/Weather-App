@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Atmosphere.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <div class="navposition">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+            <div class="container-fluid ">
+                <a class="navbar-brand fw-bold d-flex align-items-center" href="Index.html">
+                    <i class="bi bi-globe me-2"></i> Atmosphere
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <form id="searchForm" class="d-flex" role="search">
+                        <input id="citySearch" class="form-control me-2" type="search" placeholder="Search"
+                            aria-label="Search" /> <button class="btn btn-outline-success mx-3"
+                            type="submit">Search</button>
+                    </form>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active mx-3" aria-current="page" href="About.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-warning btn-sm mx-3"><a class="nav-link"
+                                    href="Warnings.html"><i
+                                        class="bi bi-exclamation-triangle"></i>Warnings</a></button>
+                        </li>
+                        <div class="d-flex align-items-center gap-3">
+                            <button id="temperatureToggle" class="btn btn-sm btn-secondary">°F / °C</button>
+                        </div>
+                    </ul>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm m-3" data-bs-toggle="modal"
+                    data-bs-target="#loginModal">
+                    Log In
+                </button>
+                <button type="button" class="btn btn-primary btn-sm m-3" data-bs-toggle="modal"
+                    data-bs-target="#signupModal">
+                    Sign Up
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Login modal -->
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Log In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">User Name</label>
+                    <input type="text" class="form-control">
+
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Modal -->
+
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label class="form-label">User Name</label>
+                    <input type="text" class="form-control">
+
+                    <label class="form-label">Enter Email</label>
+                    <input type="email" class="form-control">
+
+                    <!-- Verify Email Account -->
+
+
+                    <div class="container mt-5">
+                        <div class="card mx-auto shadow" style="max-width:400px;">
+                            <div class="card-body text-center">
+
+                                <h3>Email Verification</h3>
+                                <p class="text-muted">
+                                    Enter the 6-digit OTP sent to your email.
+                                </p>
+
+                                <input type="text" class="form-control text-center mb-3" placeholder="Enter OTP"
+                                    maxlength="6">
+
+                                <button class="btn btn-primary w-100">
+                                    Verify OTP
+                                </button>
+
+                                <p class="mt-3">
+                                    Didn't receive the code?
+                                    <a href="#">Resend OTP</a>
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Set password  -->
+
+                    <div class="modal-body">
+                        <label class="form-label">Enter Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter 8-digit password"
+                            minlength="8" maxlength="8" required>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <label for="confirmPassword" class="form-label">Re-enter Password</label>
+                        <input type="password" id="confirmPassword" class="form-control"
+                            placeholder="Re-enter your password">
+                    </div>
+
+                    <!-- create Account Btn -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--navlist  -->
+
+    <div class="linkposition">
+        <ul class="nav nav-pills nav-fill">
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Index.html">Today</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Hourly.html">Hourly</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./10-Day.html">10-Day</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Radar.html">Radar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./MinuteCast.html">MinuteCast®</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Monthly.html">Monthly</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Air.html">Air Quality</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="./Activities.html">Health & Activities</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- heroSection -->
+
+    <div class="container p-4 border">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-12 col-md-6">
+                <div class="place">
+                    <h5 id="cityName"><i class="fa-solid fa-location-dot"></i><span id="cityName">Loading...</span>
+                    </h5>
+                </div>
+                <h1 id="temperature" class="display-1 fw-normal lh-1 mb-0" style="font-size: 7rem;">...</h1>
+                <p id="weatherCondition" class="fs-4 mb-0 fw-semibold">Loading...</p>
+                <p id="highLow" class="small opacity-75 mb-2">H: Loading... &middot; L: Loading...</p>
+                <p id="feelsLike" class="small opacity-50 mb-0">Feels like Loading...</p>
+            </div>
+
+            <div class="col-12 col-md-6 text-center text-md-end">
+                <img id="weatherImage" src="media/clear-sky.svg" class="img-fluid" alt="Partly Cloudy"
+                    style="max-height: 180px;">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Temperature Chart -->
+
+    <div class="container mt-4 border bg-primary rounded-4 text-white">
+        <h5 class="p-4">Today's Temperature</h5>
+        <div class="container m-3 border-0 rounded-2 ">
+            <canvas id="tempChart"></canvas>
+        </div>
+    </div>
+
+    <!-- Hourly Forecast box -->
+
+    <div class="container mt-4 border bg-primary rounded-4 text-white">
+        <h5 class="p-4">Hourly Forecast</h5>
+        <div id="hourlyForecast" class=" d-flex overflow-auto text-center py-3 m-3 border-0 rounded-2 ">
+            <div class="px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Now</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+            <div class="border-0px-4 py-3 me-3 rounded bg-light text-dark flex-shrink-0">
+                <div>
+                    <h6>Loading...</h6>
+                </div>
+                <div class="fs-2">Loading...</div>
+                <div>
+                    <p class="fw-bold mb-0 mt-4">Loading...</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 7-Day Forecast -->
+
+    <div class="container mt-4 border bg-primary rounded-4 text-white">
+        <h5 class="p-4">7-Day Forecast</h5>
+        <div class="mt-4">
+            <div id="dailyForecast" class="container text-center">
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Today</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 62%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Loading...</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 65%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Loading...</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 67%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Loading...</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 64%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Loading...</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 60%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Loading...</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 58%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+                <div class="row align-items-center py-2">
+                    <div class="col-2">
+                        <p>Wed</p>
+                    </div>
+                    <div class="col-1 text-center" style="font-size:1.5rem;">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-3">
+                        <span>Loading...</span>
+                    </div>
+                    <div class="col-4">
+                        <div class="progress " role="progressbar" aria-label="Example with label" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-secondary" style="width: 61%">Loading...</div>
+                        </div>
+                    </div>
+                    <div class="col-2 text-end">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conditions info -->
+
+    <div class="container mt-4 pb-4 border bg-primary rounded-4 text-white">
+        <h5 class="p-4">Conditions</h5>
+        <div class="container text-center">
+            <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-droplet"></i> Humidity</h5>
+                        <p id="humidity">58%</p>
+                        <h6 id="humidityStatus">Moderate</h6>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-wind"></i> Wind</h5>
+                        <p id="windSpeed">12 mph</p>
+                        <h6 id="windDirection">SSW</h6>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-eye"></i> Visibility</h5>
+                        <p id="visibility">10 mi</p>
+                        <h6 id="visibilityStatus">Clear</h6>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-speedometer"></i> Pressure</h5>
+                        <p id="pressure">1013</p>
+                        <h6 id="pressureStatus">Normal</h6>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-sun"></i> UV Index</h5>
+                        <p id="uvIndex">5</p>
+                        <h6 id="uvStatus">Moderate</h6>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="p-3 bg-light rounded-3 text-dark weather-card">
+                        <h5><i class="bi bi-thermometer"></i> Dew Point</h5>
+                        <p id="dewPoint">58°</p>
+                        <h6 id="dewPointStatus">Comfortable</h6>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p id="updatedTime" class="mt-5">Atmosphere · Updated 12:00 PM · Monday, June 29</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script type="module" src="JavaScript/chart.js"></script> -->
+    <script type="module" src="JavaScript/home.js"></script>
+</body>
+
+</html>
